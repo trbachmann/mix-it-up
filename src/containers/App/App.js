@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { fetchMatches } from '../../thunks/fetchMatches';
 
-class App extends Component {
+export class App extends Component {
+
+  componentDidMount() {
+    this.props.fetchMatches();
+  }
   render() {
     return (
       <div className="App">
@@ -12,4 +20,15 @@ class App extends Component {
   }
 }
 
-export default App;
+export const mapStateToProps = (state) => ({
+  desserts: state.desserts,
+  error: state.error,
+  isLoading: state.isLoading,
+  attribution: state.attribution
+});
+
+export const mapDispatchToProps = (dispatch) => ({
+  fetchMatches: () => dispatch(fetchMatches())
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
