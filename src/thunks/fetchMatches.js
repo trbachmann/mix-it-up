@@ -7,7 +7,7 @@ export const fetchMatches= (url) => {
   return async (dispatch) => {
     try {
       dispatch(toggleLoading(true));
-      const url = `http://api.yummly.com/v1/api/recipes?_app_id=${apiId}&_app_key=${apiKey}&q=desserts&requirePictures=true&maxResult=30&start=0`;
+      const url = `http://api.yummly.com/v1/api/recipes?_app_id=${apiId}&_app_key=${apiKey}&q=desserts&requirePictures=true&maxResult=40&start=40`;
       const response = await fetchData(url);
       dispatch(toggleLoading(false));
       const recipes = await dispatch(fetchRecipes(response.matches));
