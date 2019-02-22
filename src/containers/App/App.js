@@ -20,17 +20,24 @@ export class App extends Component {
           <h1>Mix It Up</h1>
         </header>
         <Switch>
+          <Route exact path='/desserts' render={({ match }) => <RecipeContainer match={match}/>} />
+          <Route exact path='/my-recipes' render={({ match }) => <RecipeContainer match={match}/>} />
           <Route exact path='/' render={({ match }) => <RecipeContainer match={match}/>}/>
-          <Route path='/desserts' render={({ match }) => <RecipeContainer match={match}/>} />
-          <Route path='/my-recipes' render={({ match }) => <RecipeContainer match={match}/>} />
+          <Route path='/desserts/:id' render={({ match }) => {
+            const dessert= this.props.desserts.find(dessert => dessert.id === match.params.id);
+            if (!dessert) {
+              return <Error404 />
+            }
+            return <RecipeCard match={match} {...dessert}/>
+          }} />
+          <Route path='/my-recipes/id' render={({ match }) => {
+            const userRecipe = this.props.userRecipes.find(recipe => recipe.id === match.params.id);
+            if (!userRecipe) {
+              return <Error404 />
+            }
+            return <RecipeCard match={match} {...userRecipe} />
+          }} />
         </Switch>
-        <Route path='/desserts/:id' render={({ match }) => {
-          const dessert= this.props.desserts.find(dessert => dessert.id === match.params.id);
-          if (!dessert) {
-            return <Error404 />
-          }
-          return <RecipeCard match={match} {...dessert}/>
-        }} />
       </div>
     );
   }
@@ -38,6 +45,7 @@ export class App extends Component {
 
 export const mapStateToProps = (state) => ({
   desserts: state.desserts,
+  userRecipes: state.userRecipes,
   error: state.error,
   isLoading: state.isLoading,
   attribution: state.attribution
