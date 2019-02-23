@@ -6,11 +6,13 @@ import { fetchMatches } from '../../thunks/fetchMatches';
 import RecipeContainer from '../RecipeContainer/RecipeContainer.js';
 import RecipeCard from '../RecipeCard/RecipeCard.js';
 import { Error404 } from '../../components/Error404/Error404.js';
+import { Nav } from '../../components/Nav/Nav.js';
 
 export class App extends Component {
-
   componentDidMount() {
+    if (!this.props.desserts.length) {
     this.props.fetchMatches();
+    }
   }
   
   render() {
@@ -18,6 +20,7 @@ export class App extends Component {
       <div className="App">
         <header className="App--header">
           <h1>Mix It Up</h1>
+          <Nav />
         </header>
         <Switch>
           <Route exact path='/desserts' render={({ match }) => <RecipeContainer match={match}/>} />

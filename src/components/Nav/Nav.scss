@@ -1,0 +1,24 @@
+  .Nav--div {
+    background-color: #fff;
+    height: 3em;
+    display: flex;
+    align-items: center
+  } 
+
+ .Nav--NavLink {
+   font-size: 1.5em;
+   border-bottom: 2px solid transparent;
+   text-decoration: none;
+   color: black;
+   margin-right: 2em;
+   padding: .4em 0;
+   &:hover {
+     border-bottom: 2px solid $darkMaroon;
+   }
+ }
+
+ .Nav--NavLink--margin {
+   @extend .Nav--NavLink;
+   margin-left: auto;
+ }
+
