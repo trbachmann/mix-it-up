@@ -18,6 +18,11 @@ export const setError = (message) => ({
   message
 });
 
+export const setUserRecipes = (recipes) => ({
+  type: 'SET_USER_RECIPES',
+  recipes
+});
+
 export const addUserRecipe = (recipe) => ({
   type: 'ADD_USER_RECIPE',
   recipe

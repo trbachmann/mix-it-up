@@ -45,6 +45,17 @@ describe('actions', () => {
       expect(result).toEqual(expected);
     });
   });
+  
+  describe('setUserRecipes', () => {
+    it('should return an object with a type of SET_USER_RECIES and recipes', () => {
+      const expected = {
+        type: 'SET_USER_RECIPES',
+        recipes: data.mockUserRecipes
+      };
+      const result = actions.setUserRecipes(data.mockUserRecipes);
+      expect(result).toEqual(expected);
+    });
+  });
 
   describe('addUserRecipe', () => {
     it('should return an object with a type of ADD_USER_RECIPE and a recipe', () => {
