@@ -17,3 +17,13 @@ export const setError = (message) => ({
   type: 'SET_ERROR',
   message
 });
+
+export const addRecipe = (recipe) => ({
+  type: 'ADD_RECIPE',
+  recipe
+});
+
+export const updateRecipe = (recipe) => ({
+  type: 'UPDATE_RECIPE',
+  recipe
+});
