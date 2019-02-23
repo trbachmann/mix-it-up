@@ -13,11 +13,8 @@ export class RecipeCard extends Component {
   }
 
   componentDidMount = () => {
-    const { match } = this.props;
-    if (match.path === '/my-recipes/:id') {
       const notes = this.props.recipe.notes;
       this.setState({ notes });
-    }
   }
 
   componentWillUnmount = () => {
@@ -38,6 +35,12 @@ export class RecipeCard extends Component {
     } else {
       this.setLocalStorage(recipeToSave);
     }
+  }
+
+  setLocalStorage = (recipe) => {
+    const { id, notes } = recipe
+    const recipes = JSON.stringify([{ id, notes }]);
+    localStorage.setItem('userRecipes', recipes);
   }
 
   saveToStore = (recipe) => {
@@ -65,19 +68,15 @@ export class RecipeCard extends Component {
     localStorage.setItem('userRecipes', JSON.stringify(updatedRecipes));
   }
 
-  setLocalStorage = (recipe) => {
-    const { id, notes } = recipe
-    const recipes = JSON.stringify([ { id, notes } ]);
-    localStorage.setItem('userRecipes', recipes);
-  }
-
   render() {
     const { images, name, source, totalTime } = this.props.recipe;
+    const { match } = this.props;
     return (
       <article className='RecipeCard-article'>
         <NavLink to='/'>
           <img className='RecipeCard--icon' src={closeIcon} alt='close icon' />
         </NavLink>
+        {(match.path === '/my-recipes/:id') && <button>DELETE</button>}
         <div className='RecipeCard--div--flex'>
           <div className='RecipeCard--div'>
             <img className='RecipeCard--img' src={images[0].hostedLargeUrl} alt={name}/>
