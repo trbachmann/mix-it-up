@@ -20,7 +20,7 @@ export class RecipeContainer extends Component {
   getRecipesToDisplay = () => {
     let property = this.getRecipeType();  
     return this.props[property].map(recipe => {
-      return <RecipeLinkCard recipe={recipe} key={recipe.id}/>
+      return <RecipeLinkCard recipe={recipe} key={recipe.id} type={property}/>
     });
   }
 
