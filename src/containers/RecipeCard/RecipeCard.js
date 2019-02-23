@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addUserRecipe, updateUserRecipe, setStatus } from '../../actions';
+import { deleteRecipeNotes, updateRecipeNotes, setStatus } from '../../actions';
 import { NavLink, Redirect } from 'react-router-dom';
 
 export class RecipeCard extends Component {
@@ -26,31 +26,32 @@ export class RecipeCard extends Component {
   }
 
   handleSave = () => {
-    const recipeToSave = { ...this.props.recipe, notes: this.state.notes };
-    this.saveToStore(recipeToSave); 
+    const { id } = this.props.recipe;
+    const { notes } = this.state;
+    const { setStatus, updateRecipeNotes } = this.props;
+    updateRecipeNotes(id, notes);
     
     if (localStorage.hasOwnProperty('userRecipes')) {
-      this.updateLocalStorage(recipeToSave);
+      this.updateLocalStorage(id, notes);
     } else {
-      this.setLocalStorage(recipeToSave);
+      this.setLocalStorage(id, notes);
     }
+
+    setStatus('success');
   }
 
-  setLocalStorage = (recipe) => {
-    const { id, notes } = recipe
+  setLocalStorage = (id, notes) => {
     const recipes = JSON.stringify([{ id, notes }]);
     localStorage.setItem('userRecipes', recipes);
   }
 
-  saveToStore = (recipe) => {
-    const { userRecipes, addUserRecipe, updateUserRecipe, setStatus } = this.props;
-    const found = userRecipes.find(userRecipe => userRecipe.id === recipe.id);
-    found ? updateUserRecipe(recipe) : addUserRecipe(recipe); 
+  saveToStore = (id, notes) => {
+    const { setStatus, updateRecipeNotes } = this.props;
+    updateRecipeNotes(id, notes);
     setStatus('success');
   }
 
-  updateLocalStorage = (recipe) => {
-    const { id, notes } = recipe
+  updateLocalStorage = (id, notes) => {
     const savedRecipes = JSON.parse(localStorage.getItem('userRecipes'));
     const found = savedRecipes.find(savedRecipe => savedRecipe.id === id);
     let updatedRecipes;
@@ -80,7 +81,7 @@ export class RecipeCard extends Component {
           <NavLink to='/'>
             <button className='RecipeCard--icon--close'><i className='far fa-times-circle'></i></button>
           </NavLink>
-          {(match.path === '/my-recipes/:id') && <button className='RecipeCard--icon--delete'><i className="far fa-trash-alt"></i></button>}
+          {(match.path === '/my-recipes/:id') && <button onClick={this.handleDelete} className='RecipeCard--icon--delete'><i className="far fa-trash-alt"></i></button>}
         </div>
         <div className='RecipeCard--div--flex'>
           <div className='RecipeCard--div'>
@@ -108,14 +109,13 @@ export class RecipeCard extends Component {
 }
 
 export const mapStateToProps = (state) => ({
-  userRecipes: state.userRecipes,
   status: state.status,
   desserts: state.desserts
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  addUserRecipe: (recipe) => dispatch(addUserRecipe(recipe)),
-  updateUserRecipe: (recipe) => dispatch(updateUserRecipe(recipe)),
+  deleteRecipeNotes: (id) => dispatch(deleteRecipeNotes(id)),
+  updateRecipeNotes: (id, notes) => dispatch(updateRecipeNotes(id, notes)),
   setStatus: (status) => dispatch(setStatus(status)),
 });
 
