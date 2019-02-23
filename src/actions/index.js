@@ -18,12 +18,17 @@ export const setError = (message) => ({
   message
 });
 
-export const addRecipe = (recipe) => ({
-  type: 'ADD_RECIPE',
+export const addUserRecipe = (recipe) => ({
+  type: 'ADD_USER_RECIPE',
   recipe
 });
 
-export const updateRecipe = (recipe) => ({
-  type: 'UPDATE_RECIPE',
+export const updateUserRecipe = (recipe) => ({
+  type: 'UPDATE_USER_RECIPE',
   recipe
+});
+
+export const setStatus = (status) => ({
+  type: 'SET_STATUS',
+  status
 });
