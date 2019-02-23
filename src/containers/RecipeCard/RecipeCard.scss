@@ -61,9 +61,25 @@
   margin: 1.3em 0 .9em 0;
 }
 
-.RecipeCard--icon {
+.RecipeCard--div--buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.RecipeCard--icon--close {
+  margin-top: .7em;
   margin-left: .5em;
-  margin-top: .5em;
+  font-size: 1.2em;
+  border: 0;
+  &:hover {
+    color: $darkMaroon;
+  }
+}
+
+.RecipeCard--icon--delete {
+  @extend .RecipeCard--icon--close;
+  margin-left: auto;
+  margin-right: .5em;
 }
 
 @media screen and (max-width: 850px) {

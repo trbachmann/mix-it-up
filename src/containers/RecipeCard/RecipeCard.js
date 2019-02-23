@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import closeIcon from '../../images/close.svg';
 import { addUserRecipe, updateUserRecipe, setStatus } from '../../actions';
 import { NavLink, Redirect } from 'react-router-dom';
 
@@ -71,12 +70,18 @@ export class RecipeCard extends Component {
   render() {
     const { images, name, source, totalTime } = this.props.recipe;
     const { match } = this.props;
+    let style = 'RecipeCard--div--button';
+    if (match.path === '/my-recipes/:id') {
+      style = 'RecipeCard--div--buttons';
+    } 
     return (
       <article className='RecipeCard-article'>
-        <NavLink to='/'>
-          <img className='RecipeCard--icon' src={closeIcon} alt='close icon' />
-        </NavLink>
-        {(match.path === '/my-recipes/:id') && <button>DELETE</button>}
+        <div className={style}>
+          <NavLink to='/'>
+            <button className='RecipeCard--icon--close'><i className='far fa-times-circle'></i></button>
+          </NavLink>
+          {(match.path === '/my-recipes/:id') && <button className='RecipeCard--icon--delete'><i className="far fa-trash-alt"></i></button>}
+        </div>
         <div className='RecipeCard--div--flex'>
           <div className='RecipeCard--div'>
             <img className='RecipeCard--img' src={images[0].hostedLargeUrl} alt={name}/>
