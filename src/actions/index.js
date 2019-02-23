@@ -18,19 +18,15 @@ export const setError = (message) => ({
   message
 });
 
-export const setUserRecipes = (recipes) => ({
-  type: 'SET_USER_RECIPES',
-  recipes
+export const updateRecipeNotes = (id, notes) => ({
+  type: 'UPDATE_RECIPE_NOTES',
+  id,
+  notes
 });
 
-export const addUserRecipe = (recipe) => ({
-  type: 'ADD_USER_RECIPE',
-  recipe
-});
-
-export const updateUserRecipe = (recipe) => ({
-  type: 'UPDATE_USER_RECIPE',
-  recipe
+export const deleteRecipeNotes = (id) => ({
+  type: 'DELETE_RECIPE_NOTES',
+  id
 });
 
 export const setStatus = (status) => ({
