@@ -13,8 +13,9 @@ export const dessertsReducer = (state = [], action) => {
     case 'DELETE_RECIPE_NOTES':
       const recipesWithNoteRemoved = state.map(recipe => {
         if (recipe.id === action.id) {
-          recipe.note = '';
+          recipe.notes = '';
         }
+        return recipe;
       });
       return recipesWithNoteRemoved;
     default:
