@@ -2,9 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const RecipeLinkCard = (props) => {
-  const { recipe } = props;
+  const { recipe, type } = props;
+  let pathToUse;
+  (type === 'desserts') ? (pathToUse = '/desserts/') : (pathToUse = '/my-recipes/')
   return(
-    <Link className='RecipeLinkCard--Link' to={'/desserts/'+ recipe.id}>
+    <Link className='RecipeLinkCard--Link' to={pathToUse+ recipe.id}>
       <div className='RecipeLinkCard--div'>
         <img className='RecipeLinkCard-img' src={recipe.images[0].hostedLargeUrl} alt={recipe.name}/>
         <h2>{recipe.name}</h2>
