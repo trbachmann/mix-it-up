@@ -25,6 +25,13 @@ export class RecipeCard extends Component {
     this.setState({ notes: value });
   }
 
+  handleDelete = () => {
+    const { deleteRecipeNotes, setStatus, recipe } = this.props;
+    this.removeFromLocalStorage(recipe.id);
+    deleteRecipeNotes(recipe.id);
+    setStatus('success');
+  }
+
   handleSave = () => {
     const { id } = this.props.recipe;
     const { notes } = this.state;
@@ -38,6 +45,12 @@ export class RecipeCard extends Component {
     }
 
     setStatus('success');
+  }
+
+  removeFromLocalStorage = (id) => {
+    const savedRecipes = JSON.parse(localStorage.getItem('userRecipes'));
+    const updatedRecipes = savedRecipes.filter(recipe => recipe.id !== id);
+    localStorage.setItem('userRecipes', JSON.stringify(updatedRecipes));
   }
 
   setLocalStorage = (id, notes) => {
