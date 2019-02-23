@@ -3,7 +3,7 @@ import { toggleLoading, setRecipes, setAttribution, setError } from '../actions'
 import { apiId, apiKey } from '../api-key';
 import { fetchRecipes } from './fetchRecipes';
 
-export const fetchMatches= (url) => {
+export const fetchMatches= () => {
   return async (dispatch) => {
     try {
       dispatch(toggleLoading(true));
