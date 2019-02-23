@@ -1,13 +1,13 @@
 export const userRecipesReducer = (state = [], action) => {
   switch(action.type) {
-    case 'ADD_RECIPE':
+    case 'ADD_USER_RECIPE':
       return [...state, action.recipe];
-    case 'UPDATE_RECIPE':
+    case 'UPDATE_USER_RECIPE':
       const updateRecipes = state.map(recipe => {
         if(recipe.id === action.recipe.id) {
           return action.recipe
         }
-        return recipe
+        return recipe;
       });
       return updateRecipes;
     default:
