@@ -31,16 +31,17 @@ export class App extends Component {
             if (!dessert) {
               return <Error404 />
             }
-            return <RecipeCard match={match} {...dessert}/>
+            return <RecipeCard match={match} recipe={dessert}/>
           }} />
-          <Route path='/my-recipes/id' render={({ match }) => {
+        </Switch>
+          <Route path='/my-recipes/:id' render={({ match }) => {
+            console.log(match.params.id);
             const userRecipe = this.props.userRecipes.find(recipe => recipe.id === match.params.id);
             if (!userRecipe) {
               return <Error404 />
             }
-            return <RecipeCard match={match} {...userRecipe} />
+            return <RecipeCard match={match} recipe={userRecipe} />
           }} />
-        </Switch>
       </div>
     );
   }
