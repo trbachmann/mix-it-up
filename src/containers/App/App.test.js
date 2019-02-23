@@ -7,8 +7,7 @@ import { createStore } from 'redux';
 import { rootReducer } from '../../reducers/';
 import { shallow } from 'enzyme';
 import * as data from '../../mockData';
-import { fetchMatches } from '../../thunks/fetchMatches';
-import { fetchUserRecipes } from '../../thunks/fetchUserRecipes';
+import { fetchRecipesAndAttribution } from '../../thunks/fetchRecipesAndAttribution';
 
 const mockProps = {
   desserts: data.mockRecipes,
@@ -16,12 +15,10 @@ const mockProps = {
   error: '',
   isLoading: false,
   attribution: {},
-  fetchMatches: jest.fn(() => true),
-  fetchUserRecipes: jest.fn(() => true)
+  fetchRecipesAndAttribution: jest.fn(() => true),
 }
 
-jest.mock('../../thunks/fetchUserRecipes.js');
-jest.mock('../../thunks/fetchMatches.js');
+jest.mock('../../thunks/fetchRecipesAndAttribution.js');
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
