@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import closeIcon from '../../images/close.svg';
-import { addRecipe, updateRecipe } from '../../actions';
+import { addUserRecipe, updateUserRecipe, setStatus } from '../../actions';
+import { NavLink, Redirect } from 'react-router-dom';
 
 export class RecipeCard extends Component {
   constructor() {
@@ -13,12 +14,14 @@ export class RecipeCard extends Component {
 
   componentDidMount = () => {
     const { match } = this.props;
-    console.log('the path is:', match.path)
     if (match.path === '/my-recipes/:id') {
       const notes = this.props.recipe.notes;
-      console.log('notes:', notes);
       this.setState({ notes });
     }
+  }
+
+  componentWillUnmount = () => {
+    this.props.setStatus('');
   }
 
   handleChange = (event) => {
@@ -27,21 +30,54 @@ export class RecipeCard extends Component {
   }
 
   handleSave = () => {
-    this.saveToStore();
+    const recipeToSave = { ...this.props.recipe, notes: this.state.notes };
+    this.saveToStore(recipeToSave); 
+    
+    if (localStorage.hasOwnProperty('userRecipes')) {
+      this.updateLocalStorage(recipeToSave);
+    } else {
+      this.setLocalStorage(recipeToSave);
+    }
   }
 
-  saveToStore = () => {
-    const { userRecipes, recipe, addRecipe, updateRecipe } = this.props;
-    const recipeToSave = { ...recipe, notes: this.state.notes };
-    const found = userRecipes.find(userRecipe => userRecipe.id === recipe.id)
-    found ? updateRecipe(recipeToSave) : addRecipe(recipeToSave);
+  saveToStore = (recipe) => {
+    const { userRecipes, addUserRecipe, updateUserRecipe, setStatus } = this.props;
+    const found = userRecipes.find(userRecipe => userRecipe.id === recipe.id);
+    found ? updateUserRecipe(recipe) : addUserRecipe(recipe); 
+    setStatus('success');
+  }
+
+  updateLocalStorage = (recipe) => {
+    const { id, notes } = recipe
+    const savedRecipes = JSON.parse(localStorage.getItem('userRecipes'));
+    const found = savedRecipes.find(savedRecipe => savedRecipe.id === id);
+    let updatedRecipes;
+    if (found) {
+      updatedRecipes = savedRecipes.map(savedRecipe => {
+        if (savedRecipe.id === id) {
+          savedRecipe.notes = notes;
+        }
+        return savedRecipe
+      });
+    } else {
+      updatedRecipes = [...savedRecipes, { id, notes }];
+    }
+    localStorage.setItem('userRecipes', JSON.stringify(updatedRecipes));
+  }
+
+  setLocalStorage = (recipe) => {
+    const { id, notes } = recipe
+    const recipes = JSON.stringify([ { id, notes } ]);
+    localStorage.setItem('userRecipes', recipes);
   }
 
   render() {
     const { images, name, source, totalTime } = this.props.recipe;
-    return(
+    return (
       <article className='RecipeCard-article'>
-      <img className='RecipeCard--icon' src={closeIcon} alt='close icon'/>
+        <NavLink to='/'>
+          <img className='RecipeCard--icon' src={closeIcon} alt='close icon' />
+        </NavLink>
         <div className='RecipeCard--div--flex'>
           <div className='RecipeCard--div'>
             <img className='RecipeCard--img' src={images[0].hostedLargeUrl} alt={name}/>
@@ -61,18 +97,22 @@ export class RecipeCard extends Component {
           </div>
 
         </div>
+        { (this.props.status === 'success') && <Redirect to='/'/> }
       </article>
     );
   }
 }
 
 export const mapStateToProps = (state) => ({
-  userRecipes: state.userRecipes
+  userRecipes: state.userRecipes,
+  status: state.status,
+  desserts: state.desserts
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  addRecipe: (recipe) => dispatch(addRecipe(recipe)),
-  updateRecipe: (recipe) => dispatch(updateRecipe(recipe))
+  addUserRecipe: (recipe) => dispatch(addUserRecipe(recipe)),
+  updateUserRecipe: (recipe) => dispatch(updateUserRecipe(recipe)),
+  setStatus: (status) => dispatch(setStatus(status)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeCard);
