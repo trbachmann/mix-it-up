@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { deleteRecipeNotes, updateRecipeNotes, setStatus } from '../../actions';
 import { NavLink, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export class RecipeCard extends Component {
   constructor() {
@@ -94,7 +95,10 @@ export class RecipeCard extends Component {
           <NavLink to='/'>
             <button className='RecipeCard--icon--close'><i className='far fa-times-circle'></i></button>
           </NavLink>
-          {(match.path === '/my-recipes/:id') && <button onClick={this.handleDelete} className='RecipeCard--icon--delete'><i className="far fa-trash-alt"></i></button>}
+          {
+            (match.path === '/my-recipes/:id') && 
+            <button onClick={this.handleDelete} className='RecipeCard--icon--delete'><i className="far fa-trash-alt"></i></button>
+          }
         </div>
         <div className='RecipeCard--div--flex'>
           <div className='RecipeCard--div'>
@@ -103,7 +107,10 @@ export class RecipeCard extends Component {
             <p className='RecipeCard--p'>From: {source.sourceDisplayName}</p>
           </div>
           <div className='RecipeCard--div-notes'>
-            <a className='RecipeCard--anchor' href={source.sourceRecipeUrl} target='_blank'>{name}</a>
+            <a className='RecipeCard--anchor' 
+              href={source.sourceRecipeUrl} 
+              target='_blank' 
+              rel='noopener noreferrer'>{name}</a>
             <p className='RecipeCard--p--large'>My Baking Notes:</p>
             <textarea 
               className='RecipeCard--textarea' 
@@ -133,3 +140,13 @@ export const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeCard);
+
+RecipeCard.propTypes = {
+  recipe: PropTypes.object,
+  match: PropTypes.object,
+  status: PropTypes.string,
+  dessert: PropTypes.array,
+  deleteRecipeNotes: PropTypes.func,
+  updateRecipeNotes: PropTypes.func,
+  setStatus: PropTypes.func,
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { RecipeLinkCard } from '../../components/RecipeLinkCard/RecipeLinkCard';
+import PropTypes from 'prop-types';
 
 export class RecipeContainer extends Component {
   getRecipesToDisplay = () => {
@@ -17,7 +18,8 @@ export class RecipeContainer extends Component {
   }
   
   populateUserRecipes = () => {
-    return this.props.desserts.reduce((acc, recipe) => {
+    const { desserts } = this.props;
+    return desserts.reduce((acc, recipe) => {
       if (recipe.notes !== '') {
         acc.push(<RecipeLinkCard recipe={recipe} key={recipe.id} />)
       }
@@ -26,7 +28,8 @@ export class RecipeContainer extends Component {
   }
 
   populateRecipesWithoutUsers = () => {
-    return this.props.desserts.reduce((acc, recipe) => {
+    const { desserts } = this.props;
+    return desserts.reduce((acc, recipe) => {
       if (recipe.notes === '') {
         acc.push(<RecipeLinkCard recipe={recipe} key={recipe.id} />)
       }
@@ -48,3 +51,8 @@ export const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(RecipeContainer);
+
+RecipeContainer.propTypes = {
+  desserts: PropTypes.array,
+  match: PropTypes.object
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export const RecipeLinkCard = (props) => {
   const { recipe } = props;
@@ -15,4 +16,8 @@ export const RecipeLinkCard = (props) => {
       </div>
     </Link>
   );
+}
+
+RecipeLinkCard.propTypes = {
+  recipe: PropTypes.object
 }
