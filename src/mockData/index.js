@@ -51,7 +51,8 @@ export const mockRecipes = [
       Sour: 0.1667,
       Salty: 0.1667
     },
-    rating: 5
+    rating: 5,
+    notes: ''
   },
   {
     yield: "serves two",
@@ -109,7 +110,8 @@ export const mockRecipes = [
       Sour: 0,
       Salty: 0.3333
     },
-    rating: 4
+    rating: 4,
+    notes: ''
   }
 ];
 
@@ -154,7 +156,8 @@ export const mockRecipe = {
     ]
   },
   flavors: {},
-  rating: 4
+  rating: 4,
+  notes: ''
 };
 
 export const mockUserSavedRecipe = {
@@ -173,7 +176,7 @@ export const mockUserRecipesFromStorage = [
   }
 ];
 
-export const mockUserRecipes = [
+export const mockRecipesWithUserNotes = [
   {
     notes: 'Add two tablespoons of additional cream',
     yield: "4 Servings",

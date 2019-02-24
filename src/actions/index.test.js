@@ -13,17 +13,6 @@ describe('actions', () => {
     });
   });
 
-  describe('setRecipes', () => {
-    it('should return an object with a type of SET_RECIPES and recipes', () => {
-      const expected = {
-        type: 'SET_RECIPES',
-        recipes: data.mockRecipes
-      };
-      const result = actions.setRecipes(data.mockRecipes);
-      expect(result).toEqual(expected);
-    });
-  });
-
   describe('setAttribution', () => {
     it('should return an object with a type of SET_ATTRIBUTION and an attribution', () => {
       const expected = {
@@ -45,36 +34,37 @@ describe('actions', () => {
       expect(result).toEqual(expected);
     });
   });
+
+  describe('setRecipes', () => {
+    it('should return an object with a type of SET_RECIPES and recipes', () => {
+      const expected = {
+        type: 'SET_RECIPES',
+        recipes: data.mockRecipes
+      };
+      const result = actions.setRecipes(data.mockRecipes);
+      expect(result).toEqual(expected);
+    });
+  });
+
+  describe('updateRecipeNotes', () => {
+    it('should return an object with a type of UPDATE_RECIPE_NOTES an id and notes', () => {
+      const expected = {
+        type: 'UPDATE_RECIPE_NOTES',
+        id: data.mockRecipe.id,
+        notes: data.mockRecipe.notes
+      };
+      const result = actions.updateRecipeNotes(data.mockRecipe.id, data.mockRecipe.notes);
+      expect(result).toEqual(expected);
+    });
+  });
   
-  describe('setUserRecipes', () => {
-    it('should return an object with a type of SET_USER_RECIES and recipes', () => {
+  describe('deleteRecipeNotes', () => {
+    it('should return an object with a type of DELETE_RECIPE_NOTES and an id', () => {
       const expected = {
-        type: 'SET_USER_RECIPES',
-        recipes: data.mockUserRecipes
+        type: 'DELETE_RECIPE_NOTES',
+        id: data.mockRecipe.id
       };
-      const result = actions.setUserRecipes(data.mockUserRecipes);
-      expect(result).toEqual(expected);
-    });
-  });
-
-  describe('addUserRecipe', () => {
-    it('should return an object with a type of ADD_USER_RECIPE and a recipe', () => {
-      const expected = {
-        type: 'ADD_USER_RECIPE',
-        recipe: data.mockRecipe
-      };
-      const result = actions.addUserRecipe(data.mockRecipe);
-      expect(result).toEqual(expected);
-    });
-  });
-
-  describe('updateUserRecipe', () => {
-    it('should return an object with a type of UPDATE_USER_RECIPE and a recipe', () => {
-      const expected = {
-        type: 'UPDATE_USER_RECIPE',
-        recipe: data.mockRecipe
-      };
-      const result = actions.updateUserRecipe(data.mockRecipe);
+      const result = actions.deleteRecipeNotes(data.mockRecipe.id);
       expect(result).toEqual(expected);
     });
   });

@@ -3,11 +3,6 @@ export const toggleLoading = (bool) => ({
   bool
 });
 
-export const setRecipes = (recipes) => ({
-  type: 'SET_RECIPES',
-  recipes
-});
-
 export const setAttribution = (attribution) => ({
   type: 'SET_ATTRIBUTION',
   attribution
@@ -16,6 +11,11 @@ export const setAttribution = (attribution) => ({
 export const setError = (message) => ({
   type: 'SET_ERROR',
   message
+});
+
+export const setRecipes = (recipes) => ({
+  type: 'SET_RECIPES',
+  recipes
 });
 
 export const updateRecipeNotes = (id, notes) => ({
