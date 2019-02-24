@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecipeLinkCard should match the snapshot when the recipe props has not notes 1`] = `
+<Link
+  className="RecipeLinkCard--Link"
+  replace={false}
+  to="/desserts/Toasted-marshmallow-cookies-and-cream-milkshake-335047"
+>
+  <div
+    className="RecipeLinkCard--div"
+  >
+    <img
+      alt="Toasted Marshmallow Cookies and Cream Milkshake"
+      className="RecipeLinkCard-img"
+      src="http://lh4.ggpht.com/eUAHA16-zMjrkoD1qSyD-5GVyckd__2WwY213f-rIi7NfZbCmwfQ53pN9COxZ6q9VZBTbc0weJvJhy8NoVymLQ=s360"
+    />
+    <h2>
+      Toasted Marshmallow Cookies and Cream Milkshake
+    </h2>
+    <p>
+      Time: 
+      15 min
+    </p>
+    <p>
+      From: 
+      Picky Palate
+    </p>
+  </div>
+</Link>
+`;
+
+exports[`RecipeLinkCard should match the snapshot when the recipe props has notes 1`] = `
+<Link
+  className="RecipeLinkCard--Link"
+  replace={false}
+  to="/my-recipes/The-Best-_and-Easy_-Peanut-Butter-Cookies-2665930"
+>
+  <div
+    className="RecipeLinkCard--div"
+  >
+    <img
+      alt="The Best (and Easy) Peanut Butter Cookies"
+      className="RecipeLinkCard-img"
+      src="https://lh3.googleusercontent.com/IL4SAQ143siXT-QfTZjeNORYdW5BTxDXLdQw-Ix1-rBMLlTfHKhZZFajd3myiwdIxndI9Kv3mpdzetFJPz7qfQ=s360"
+    />
+    <h2>
+      The Best (and Easy) Peanut Butter Cookies
+    </h2>
+    <p>
+      Time: 
+      40 min
+    </p>
+    <p>
+      From: 
+      Julia's Album
+    </p>
+  </div>
+</Link>
+`;
