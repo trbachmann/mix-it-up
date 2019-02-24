@@ -9,17 +9,26 @@ import { Error404 } from '../../components/Error404/Error404.js';
 import { Nav } from '../../components/Nav/Nav.js';
 
 export class App extends Component {
+  calculateTotalUserRecipes = () => {
+    const { desserts } = this.props;
+    const totalUserRecipes = desserts.reduce((sum, recipe) => {
+      return (recipe.notes !== '') ? (sum += 1) : sum;
+    }, 0);
+    return totalUserRecipes;
+  }
   componentDidMount() {
+    const { fetchRecipesAndAttribution } = this.props;
     if (localStorage.hasOwnProperty('userRecipes')) {
       const savedUserRecipes = JSON.parse(localStorage.getItem('userRecipes'));
-      this.props.fetchRecipesAndAttribution(savedUserRecipes);
+      fetchRecipesAndAttribution(savedUserRecipes);
     } else {
-      this.props.fetchRecipesAndAttribution();
+      fetchRecipesAndAttribution();
     }
   }
 
   getRecipeRoute = ({ match }) => {
-    const dessert = this.props.desserts.find(dessert => dessert.id === match.params.id);
+    const { desserts } = this.props;
+    const dessert = desserts.find(dessert => dessert.id === match.params.id);
     if (!dessert) {
       return <Error404 />
     }
@@ -27,11 +36,12 @@ export class App extends Component {
   }
   
   render() {
+
     return (
       <div className="App">
         <header className="App--header">
           <h1>Mix It Up</h1>
-          <Nav />
+          <Nav totalUserRecipes={this.calculateTotalUserRecipes()}/>
         </header>
         <Switch>
           <Route exact path='/desserts' render={({ match }) => <RecipeContainer match={match}/>} />
