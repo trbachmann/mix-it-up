@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { deleteRecipeNotes, updateRecipeNotes, setStatus } from '../../actions';
 import { NavLink, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import * as storage from '../../utils/storage';
 
 export class RecipeCard extends Component {
   constructor() {
@@ -13,8 +14,8 @@ export class RecipeCard extends Component {
   }
 
   componentDidMount = () => {
-      const notes = this.props.recipe.notes;
-      this.setState({ notes });
+    const notes = this.props.recipe.notes;
+    this.setState({ notes });
   }
 
   componentWillUnmount = () => {
@@ -28,7 +29,7 @@ export class RecipeCard extends Component {
 
   handleDelete = () => {
     const { deleteRecipeNotes, setStatus, recipe } = this.props;
-    this.removeFromLocalStorage(recipe.id);
+    storage.removeFromLocalStorage(recipe.id);
     deleteRecipeNotes(recipe.id);
     setStatus('success');
   }
@@ -38,48 +39,13 @@ export class RecipeCard extends Component {
     const { notes } = this.state;
     const { setStatus, updateRecipeNotes } = this.props;
     updateRecipeNotes(id, notes);
-    
     if (localStorage.hasOwnProperty('userRecipes')) {
-      this.updateLocalStorage(id, notes);
+      storage.updateLocalStorage(id, notes);
     } else {
-      this.setLocalStorage(id, notes);
+      storage.setLocalStorage(id, notes);
     }
 
     setStatus('success');
-  }
-
-  removeFromLocalStorage = (id) => {
-    const savedRecipes = JSON.parse(localStorage.getItem('userRecipes'));
-    const updatedRecipes = savedRecipes.filter(recipe => recipe.id !== id);
-    localStorage.setItem('userRecipes', JSON.stringify(updatedRecipes));
-  }
-
-  setLocalStorage = (id, notes) => {
-    const recipes = JSON.stringify([{ id, notes }]);
-    localStorage.setItem('userRecipes', recipes);
-  }
-
-  saveToStore = (id, notes) => {
-    const { setStatus, updateRecipeNotes } = this.props;
-    updateRecipeNotes(id, notes);
-    setStatus('success');
-  }
-
-  updateLocalStorage = (id, notes) => {
-    const savedRecipes = JSON.parse(localStorage.getItem('userRecipes'));
-    const found = savedRecipes.find(savedRecipe => savedRecipe.id === id);
-    let updatedRecipes;
-    if (found) {
-      updatedRecipes = savedRecipes.map(savedRecipe => {
-        if (savedRecipe.id === id) {
-          savedRecipe.notes = notes;
-        }
-        return savedRecipe
-      });
-    } else {
-      updatedRecipes = [...savedRecipes, { id, notes }];
-    }
-    localStorage.setItem('userRecipes', JSON.stringify(updatedRecipes));
   }
 
   render() {
@@ -123,7 +89,7 @@ export class RecipeCard extends Component {
               onChange={this.handleChange} 
               placeholder='Save your baking notes and specific oven instructrions'
             ></textarea>
-            <button onClick={this.handleSave}className='RecipeCard--button'>Save</button>
+            <button onClick={this.handleSave} className='RecipeCard--button'>Save</button>
           </div>
 
         </div>
@@ -134,8 +100,7 @@ export class RecipeCard extends Component {
 }
 
 export const mapStateToProps = (state) => ({
-  status: state.status,
-  desserts: state.desserts
+  status: state.status
 });
 
 export const mapDispatchToProps = (dispatch) => ({
@@ -150,7 +115,6 @@ RecipeCard.propTypes = {
   recipe: PropTypes.object,
   match: PropTypes.object,
   status: PropTypes.string,
-  dessert: PropTypes.array,
   deleteRecipeNotes: PropTypes.func,
   updateRecipeNotes: PropTypes.func,
   setStatus: PropTypes.func,
