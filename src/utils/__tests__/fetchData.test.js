@@ -1,5 +1,5 @@
-import { fetchData } from './fetchData';
-import * as data from '../mockData';
+import { fetchData } from '../fetchData';
+import * as data from '../../mockData';
 
 describe('fetchData', () => {
   const mockUrl = 'http://www.mockyummly.com/api/v1/recipes';
