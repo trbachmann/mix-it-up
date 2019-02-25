@@ -102,7 +102,12 @@ export class RecipeCard extends Component {
         </div>
         <div className='RecipeCard--div--flex'>
           <div className='RecipeCard--div'>
-            <img className='RecipeCard--img' src={images[0].hostedLargeUrl} alt={name}/>
+            <a className='RecipeCard--anchor'
+              href={source.sourceRecipeUrl}
+              target='_blank'
+              rel='noopener noreferrer'>
+              <img className='RecipeCard--img' src={images[0].hostedLargeUrl} alt={name} />
+            </a>
             <p className='RecipeCard--p'>Time: {totalTime}</p>
             <p className='RecipeCard--p'>From: {source.sourceDisplayName}</p>
           </div>

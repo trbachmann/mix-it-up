@@ -30,6 +30,9 @@
 .RecipeCard--anchor {
   color: $darkMaroon;
   font-size: 1.7em;
+  &:hover {
+    color: blue;
+  }
 }
 
 .RecipeCard--img {
