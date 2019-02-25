@@ -3,10 +3,123 @@ import { shallow } from 'enzyme';
 import { RecipeCard, mapStateToProps, mapDispatchToProps } from './RecipeCard';
 import * as data from '../../mockData';
 import { deleteRecipeNotes, updateRecipeNotes, setStatus } from '../../actions';
+import * as storage from '../../utils/storage';
 
 describe('RecipeCard', () => {
-  describe('RecipeCard component', () => {
 
+  describe('RecipeCard component', () => {
+    storage.setLocalStorage = jest.fn();
+    storage.updateLocalStorage = jest.fn();
+    storage.removeFromLocalStorage = jest.fn();
+    const mockProps = {
+      recipe: data.mockRecipe,
+      match: { path: '/' },
+      status: '',
+      deleteRecipeNotes: jest.fn(),
+      updateRecipeNotes: jest.fn(),
+      setStatus: jest.fn(),
+    };
+
+    const mockPropsWithRecipeNotes = {
+      recipe: data.mockRecipeWithUserNote,
+      match: { path: '/my-recipes/:id' },
+      status: '',
+      deleteRecipeNotes: jest.fn(),
+      updateRecipeNotes: jest.fn(),
+      setStatus: jest.fn(),
+    }
+
+    let wrapper;
+    let wrapperMyRecipes;
+    beforeEach(() => {
+      wrapper = shallow(<RecipeCard {...mockProps}/>);
+      wrapperMyRecipes = shallow(<RecipeCard {...mockPropsWithRecipeNotes}/>);
+    })
+
+    it('should match the snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should match the snapshot', () => {
+      
+
+      expect(wrapperMyRecipes).toMatchSnapshot();
+    });
+
+    describe('componentDidMount', () => {
+      it.skip('should set state with notes', () => {
+
+      });
+    });
+
+    describe('componentWillUnmount', () => {
+      it('should call setStatus', () => {
+        wrapper.instance().componentWillUnmount();
+        expect(mockProps.setStatus).toHaveBeenCalledWith('');
+      });
+    });
+
+    describe('handleChange', () => {
+      it('should set state with notes when a user updates notes', () => {
+        expect(wrapper.state('notes')).toEqual('');
+        const mockEvent = {
+          target: { value: 'Add an extra 1/2 cup of peanut butter' }
+        }
+        wrapper.find('textarea').simulate('change', mockEvent);
+        const expected = 'Add an extra 1/2 cup of peanut butter';
+        expect(wrapper.state('notes')).toEqual(expected);
+      });
+    });
+
+    describe('handleSave', () => {
+      it('should call updateRecipeNotes with an id and notes', () => {
+        const expectedId = mockProps.recipe.id;
+        const expectedNotes = 'Add an extra 1/2 cup of peanut butter';
+        wrapper.setState({ notes:  expectedNotes });
+        wrapper.find('.RecipeCard--button').simulate('click');
+        expect(mockProps.updateRecipeNotes).toHaveBeenCalledWith(expectedId, expectedNotes);
+      });
+
+      it('should call setLocalStorage if nothing saved', () => {
+        const expectedId = mockProps.recipe.id;
+        const expectedNotes = 'Add an extra 1/2 cup of peanut butter';
+        wrapper.setState({ notes: expectedNotes });
+        wrapper.find('.RecipeCard--button').simulate('click');
+        expect(storage.setLocalStorage).toHaveBeenCalledWith(expectedId, expectedNotes);
+      });
+
+      it.skip('should call updateLocalStorage is there are already recipes saved', () => {
+
+      });
+
+
+      it('should call setStatus with success', () => {
+        const expectedNotes = 'Add an extra 1/2 cup of peanut butter';
+        wrapper.setState({ notes: expectedNotes });
+        wrapper.find('.RecipeCard--button').simulate('click');
+        expect(mockProps.setStatus).toHaveBeenCalledWith('success');
+      });
+    });
+
+    describe('handleDelete', () => {
+
+      it('should call removeFromLocalStorage', () => {
+        wrapper.instance().handleDelete()
+        const expected = mockProps.recipe.id;        
+        expect(storage.removeFromLocalStorage).toHaveBeenCalledWith(expected);
+      });
+
+      it('should call deleteRecipeNotes with the recipe id', () => {
+        wrapper.instance().handleDelete()
+        const expected = mockProps.recipe.id;
+        expect(mockProps.deleteRecipeNotes).toHaveBeenCalledWith(expected);
+      });
+
+      it('should set status with success', () => {
+        wrapper.instance().handleDelete();
+        expect(mockProps.setStatus).toHaveBeenCalledWith('success');
+      });
+    });
   });
 
   describe('mapStateToProps', () => {
@@ -18,8 +131,7 @@ describe('RecipeCard', () => {
         isLoading: false
       };
       const expected = {
-        desserts: data.mockRecipes,
-        status: '', 
+        status: ''
       };
       const mappedProps = mapStateToProps(mockState);
       expect(mappedProps).toEqual(expected);

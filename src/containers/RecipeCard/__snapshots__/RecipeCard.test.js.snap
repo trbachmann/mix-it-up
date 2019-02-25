@@ -1,0 +1,179 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecipeCard RecipeCard component should match the snapshot 1`] = `
+<article
+  className="RecipeCard-article"
+>
+  <div
+    className="RecipeCard--div--button"
+  >
+    <NavLink
+      activeClassName="active"
+      aria-current="page"
+      to="/"
+    >
+      <button
+        className="RecipeCard--icon--close"
+      >
+        <i
+          className="far fa-times-circle"
+        />
+      </button>
+    </NavLink>
+  </div>
+  <div
+    className="RecipeCard--div--flex"
+  >
+    <div
+      className="RecipeCard--div"
+    >
+      <a
+        className="RecipeCard--anchor"
+        href="https://juliasalbum.com/easy-peanut-butter-cookies/"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <img
+          alt="The Best (and Easy) Peanut Butter Cookies"
+          className="RecipeCard--img"
+          src="https://lh3.googleusercontent.com/IL4SAQ143siXT-QfTZjeNORYdW5BTxDXLdQw-Ix1-rBMLlTfHKhZZFajd3myiwdIxndI9Kv3mpdzetFJPz7qfQ=s360"
+        />
+      </a>
+      <p
+        className="RecipeCard--p"
+      >
+        Time: 
+        40 min
+      </p>
+      <p
+        className="RecipeCard--p"
+      >
+        From: 
+        Julia's Album
+      </p>
+    </div>
+    <div
+      className="RecipeCard--div-notes"
+    >
+      <a
+        className="RecipeCard--anchor"
+        href="https://juliasalbum.com/easy-peanut-butter-cookies/"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        The Best (and Easy) Peanut Butter Cookies
+      </a>
+      <p
+        className="RecipeCard--p--large"
+      >
+        My Baking Notes:
+      </p>
+      <textarea
+        className="RecipeCard--textarea"
+        onChange={[Function]}
+        placeholder="Save your baking notes and specific oven instructrions"
+        value=""
+      />
+      <button
+        className="RecipeCard--button"
+        onClick={[Function]}
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</article>
+`;
+
+exports[`RecipeCard RecipeCard component should match the snapshot 2`] = `
+<article
+  className="RecipeCard-article"
+>
+  <div
+    className="RecipeCard--div--buttons"
+  >
+    <NavLink
+      activeClassName="active"
+      aria-current="page"
+      to="/"
+    >
+      <button
+        className="RecipeCard--icon--close"
+      >
+        <i
+          className="far fa-times-circle"
+        />
+      </button>
+    </NavLink>
+    <button
+      className="RecipeCard--icon--delete"
+      onClick={[Function]}
+    >
+      <i
+        className="far fa-trash-alt"
+      />
+    </button>
+  </div>
+  <div
+    className="RecipeCard--div--flex"
+  >
+    <div
+      className="RecipeCard--div"
+    >
+      <a
+        className="RecipeCard--anchor"
+        href="https://juliasalbum.com/easy-peanut-butter-cookies/"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <img
+          alt="The Best (and Easy) Peanut Butter Cookies"
+          className="RecipeCard--img"
+          src="https://lh3.googleusercontent.com/IL4SAQ143siXT-QfTZjeNORYdW5BTxDXLdQw-Ix1-rBMLlTfHKhZZFajd3myiwdIxndI9Kv3mpdzetFJPz7qfQ=s360"
+        />
+      </a>
+      <p
+        className="RecipeCard--p"
+      >
+        Time: 
+        40 min
+      </p>
+      <p
+        className="RecipeCard--p"
+      >
+        From: 
+        Julia's Album
+      </p>
+    </div>
+    <div
+      className="RecipeCard--div-notes"
+    >
+      <a
+        className="RecipeCard--anchor"
+        href="https://juliasalbum.com/easy-peanut-butter-cookies/"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        The Best (and Easy) Peanut Butter Cookies
+      </a>
+      <p
+        className="RecipeCard--p--large"
+      >
+        My Baking Notes:
+      </p>
+      <textarea
+        className="RecipeCard--textarea"
+        onChange={[Function]}
+        placeholder="Save your baking notes and specific oven instructrions"
+        value="Increase peanut butter by 1/2 cup and increase vanilla 2 teaspoons"
+      />
+      <button
+        className="RecipeCard--button"
+        onClick={[Function]}
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</article>
+`;
