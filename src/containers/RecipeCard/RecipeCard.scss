@@ -85,12 +85,48 @@
   margin-right: .5em;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 900px) {
   .RecipeCard--div--flex {
     flex-direction: column;
   }
 
   .RecipeCard-article {
     width: 500px;
+  }
+
+  .RecipeCard--img {
+    border-radius: 8px;
+    width: 400px;
+  }
+
+  .RecipeCard--div {
+    margin: auto auto 20px;
+  }
+
+  .RecipeCard--div--buttons {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .RecipeCard--div--flex {
+    flex-direction: column;
+  }
+
+  .RecipeCard-article {
+    width: 300px;
+  }
+
+  .RecipeCard--textarea {
+    width: 250px;
+  }
+
+  .RecipeCard--img {
+    border-radius: 8px;
+    width: 250px;
+  }
+
+  .RecipeCard--div-notes {
+    width: 250px;
   }
 }
