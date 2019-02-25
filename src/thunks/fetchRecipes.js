@@ -14,7 +14,7 @@ export const fetchRecipes = (recipes) => {
         dispatch(toggleLoading(false));
         return dataWithNotes;
       } catch(error) {
-        dispatch(setError(error));
+        dispatch(setError(error.message));
       }
     });
     return Promise.all(unresolvedRecipes);
