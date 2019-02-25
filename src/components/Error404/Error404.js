@@ -1,5 +1,6 @@
 import React from 'react';
-import blankRecipe from '../../images/kara-eads-unsplash.jpg'
+import blankRecipe from '../../images/kara-eads-unsplash.jpg';
+
 export const Error404 = () => {
   return(
     <div className='Error404'>

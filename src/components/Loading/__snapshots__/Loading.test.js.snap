@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading should match the snapshot 1`] = `
+<div
+  className="Loading"
+>
+  <h1>
+    Mixing up some great recipes...
+  </h1>
+  <img
+    alt="chocolate chip cookie dough in a mixing bowl"
+    className="Loading--img"
+    src="charisse-kenion-unsplash.jpg"
+  />
+  <p
+    className="Loading--p--credit"
+  >
+    Photo by Charisse Kenion on Unsplash
+  </p>
+</div>
+`;
