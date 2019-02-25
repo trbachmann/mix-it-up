@@ -422,20 +422,15 @@ export const mockYummlyResponse = {
   },
   "matches": [
     {
+      name: "Toasted Marshmallow Cookies and Cream Milkshake",
       sourceDisplayName: "Picky Palate",
+      id: "Toasted-marshmallow-cookies-and-cream-milkshake-335047",
       ingredientLines: [
         "6 Jumbo marshmallows",
         "6 cups good quality vanilla ice cream",
         "1 cup milk",
         "6 Oreo Cookies"
-      ],
-      id: "Toasted-marshmallow-cookies-and-cream-milkshake-335047",
-      recipeName: "Toasted Marshmallow Cookies and Cream Milkshake",
-      attributes: {
-        course: [
-          "Desserts"
-        ]
-      }
+      ]
     }
   ],
   "facetCounts": {},
@@ -465,3 +460,23 @@ export const mockResultFromCombineMatches = [
     notes: 'Increase peanut butter by 1/2 cup and increase vanilla 2 teaspoons'
   }
 ];
+
+export const mockUserRecipeFromStorageMatchingYummlyResponseRecipe = {
+  id: "Toasted-marshmallow-cookies-and-cream-milkshake-335047",
+  notes: 'Double the number of marshmallows'
+};
+
+export const mockResultWhenCombineWithUserSavedNotes = [
+  {
+    name: "Toasted Marshmallow Cookies and Cream Milkshake",
+    sourceDisplayName: "Picky Palate",
+    id: "Toasted-marshmallow-cookies-and-cream-milkshake-335047",
+    ingredientLines: [
+      "6 Jumbo marshmallows",
+      "6 cups good quality vanilla ice cream",
+      "1 cup milk",
+      "6 Oreo Cookies"
+    ],
+    notes: 'Double the number of marshmallows'
+  }
+]
