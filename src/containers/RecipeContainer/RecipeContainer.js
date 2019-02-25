@@ -19,12 +19,16 @@ export class RecipeContainer extends Component {
   
   populateUserRecipes = () => {
     const { desserts } = this.props;
-    return desserts.reduce((acc, recipe) => {
+    const userRecipeCards =  desserts.reduce((acc, recipe) => {
       if (recipe.notes !== '') {
         acc.push(<RecipeLinkCard recipe={recipe} key={recipe.id} />)
       }
       return acc;
     }, []);
+
+    return userRecipeCards.length ? userRecipeCards : (
+      <h1>To start saving recipes click on a recipe, add your baking notes and click save</h1>
+    );
   }
 
   populateRecipesWithoutUsers = () => {
