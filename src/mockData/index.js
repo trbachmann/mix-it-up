@@ -422,78 +422,20 @@ export const mockYummlyResponse = {
   },
   "matches": [
     {
-      "imageUrlsBySize": {
-        "90": "https://lh3.googleusercontent.com/LPwZTDxTS3za1BBxaonx4b6978tnsczCQdPIvN51PJSlWtKJU6WSGZjA-jfz5Q1IOZm0c5Pofg-mrcMxrl5WRw=s90-c"
-      },
-      "sourceDisplayName": "Small Town Woman",
-      "ingredients": [
-        "all purpose flour",
-        "baking soda",
-        "salt",
-        "butter",
-        "sugar",
-        "brown sugar",
-        "vanilla extract",
-        "egg",
-        "semi sweet chocolate chips",
-        "sweetened coconut flakes",
-        "sliced almonds"
+      sourceDisplayName: "Picky Palate",
+      ingredientLines: [
+        "6 Jumbo marshmallows",
+        "6 cups good quality vanilla ice cream",
+        "1 cup milk",
+        "6 Oreo Cookies"
       ],
-      "id": "Small-Batch-Almond-Joy-Cookies-2533966",
-      "smallImageUrls": [
-        "https://lh3.googleusercontent.com/7VASvoJNrwUl69Et4Xk-jFo-da5KZf9R9ET_kKcClQWk86Q7NxKRiRq2h4Tgxo6I4YR8WM5YUet8GRaz8Jl36dM=s90"
-      ],
-      "recipeName": "Small Batch Almond Joy Cookies",
-      "totalTimeInSeconds": 1800,
-      "attributes": {
-        "course": [
+      id: "Toasted-marshmallow-cookies-and-cream-milkshake-335047",
+      recipeName: "Toasted Marshmallow Cookies and Cream Milkshake",
+      attributes: {
+        course: [
           "Desserts"
         ]
-      },
-      "flavors": {
-        "piquant": 0,
-        "meaty": 0.8333333333333334,
-        "bitter": 0.6666666666666666,
-        "sweet": 0.8333333333333334,
-        "sour": 0.16666666666666666,
-        "salty": 0.5
-      },
-      "rating": 4
-    },
-    {
-      "imageUrlsBySize": {
-        "90": "https://lh3.googleusercontent.com/OPOVcX5zOJQrByxi8_48o5iEvkXO6sIMpJiFM8KqbfT7bzChqZh9bR3dOvOFiwYTAHd__XojsQDheHey-_xcjg=s90-c"
-      },
-      "sourceDisplayName": "OMG Chocolate Desserts",
-      "ingredients": [
-        "red velvet cake mix",
-        "cream cheese",
-        "white chocolate",
-        "semi-sweet chocolate"
-      ],
-      "id": "Red-Velvet-Truffles-2547449",
-      "smallImageUrls": [
-        "https://lh3.googleusercontent.com/b6GGlmxVcwF6o_Wjiwg28HnPxlCkyKyWfATWEXSI-Sajf2l_a3keaCiU7R--AAsY_hMtDvqcQUEyRN2ghWvrzg=s90"
-      ],
-      "recipeName": "Red Velvet Truffles",
-      "totalTimeInSeconds": 3600,
-      "attributes": {
-        "course": [
-          "Desserts"
-        ],
-        "holiday": [
-          "Valentine's Day"
-        ]
-      },
-      "flavors": {
-        "piquant": 0,
-        "meaty": 0.8333333333333334,
-        "bitter": 0.8333333333333334,
-        "sweet": 0.8333333333333334,
-        "sour": 0.16666666666666666,
-        "salty": 0.8333333333333334
-      },
-      "rating": 4
+      }
     }
   ],
   "facetCounts": {},
@@ -504,4 +446,22 @@ export const mockYummlyResponse = {
     "text": "Recipe search powered by Yummly",
     "logo": "https://static.yummly.co/api-logo.png"
   }
-}
+};
+
+export const mockResultFromCombineMatches = [
+  {
+    name: "Toasted Marshmallow Cookies and Cream Milkshake",
+    sourceDisplayName: "Picky Palate",
+    id: "Toasted-marshmallow-cookies-and-cream-milkshake-335047",
+    ingredientLines: [
+      "6 Jumbo marshmallows",
+      "6 cups good quality vanilla ice cream",
+      "1 cup milk",
+      "6 Oreo Cookies"
+    ]
+  },
+  {
+    id: "The-Best-_and-Easy_-Peanut-Butter-Cookies-2665930",
+    notes: 'Increase peanut butter by 1/2 cup and increase vanilla 2 teaspoons'
+  }
+];
