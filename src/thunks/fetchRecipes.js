@@ -10,7 +10,7 @@ export const fetchRecipes = (recipes) => {
         const url = `http://api.yummly.com/v1/api/recipe/${recipe.id}?_app_id=${apiId}&_app_key=${apiKey}`;
         const data = await fetchData(url);
         const notes = recipe.notes || '';
-        const dataWithNotes = await {...data, notes }
+        const dataWithNotes = {...data, notes }
         dispatch(toggleLoading(false));
         return dataWithNotes;
       } catch(error) {
