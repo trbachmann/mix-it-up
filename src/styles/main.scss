@@ -1,7 +1,9 @@
+@import "normalize";
 @import "variables";
 @import "index";
 @import "../containers/RecipeContainer/RecipeContainer.scss";
 @import "../components/RecipeLinkCard/RecipeLinkCard.scss";
+@import "../components//UserInstructions/UserInstructions.scss";
 @import "../containers/RecipeCard/RecipeCard.scss";
 @import "../components/Nav/Nav.scss";
 @import "../components/Error404/Error404.scss";

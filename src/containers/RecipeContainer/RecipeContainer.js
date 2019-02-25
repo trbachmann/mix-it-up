@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { RecipeLinkCard } from '../../components/RecipeLinkCard/RecipeLinkCard';
 import PropTypes from 'prop-types';
+import { UserInstructions } from '../../components/UserInstructions/UserIntructions';
 
 export class RecipeContainer extends Component {
   getRecipesToDisplay = () => {
@@ -27,7 +28,7 @@ export class RecipeContainer extends Component {
     }, []);
 
     return userRecipeCards.length ? userRecipeCards : (
-      <h1>To start saving recipes click on a recipe, add your baking notes and click save</h1>
+      <UserInstructions />
     );
   }
 
