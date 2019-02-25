@@ -16,7 +16,7 @@ export const fetchRecipesAndAttribution = (userRecipes) => {
       dispatch(setRecipes(recipes));
       dispatch(setAttribution(response.attribution));
     } catch(error) {
-      dispatch(setError(error));
+      dispatch(setError(error.message));
     }
   }
 }
