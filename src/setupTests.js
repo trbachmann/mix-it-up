@@ -19,6 +19,10 @@ class LocalStorage {
   hasOwnProperty(string) {
     return this.store[string] ? true : false;
   }
+
+  removeItem(key) {
+    delete this.store[key];
+  }
 }
 
 global.localStorage = new LocalStorage;

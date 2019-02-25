@@ -21,12 +21,62 @@ const mockProps = {
 jest.mock('../../thunks/fetchRecipesAndAttribution.js');
 
 describe('App', () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    const store = createStore(rootReducer);
+    ReactDOM.render(<Provider store={store}><BrowserRouter><App {...mockProps}/></BrowserRouter></Provider>, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
   describe('App component', () => {
-    it('renders without crashing', () => {
-      const div = document.createElement('div');
-      const store = createStore(rootReducer);
-      ReactDOM.render(<Provider store={store}><BrowserRouter><App {...mockProps}/></BrowserRouter></Provider>, div);
-      ReactDOM.unmountComponentAtNode(div);
+    let wrapper;
+    
+    beforeEach(() => {
+      wrapper = shallow(<App {...mockProps}/>)
+    })
+    it('should match the snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    afterEach(() => {
+      localStorage.removeItem('userRecipes');
+    });
+
+    it('should match the snapshot when loading', () => {
+      wrapper = shallow(<App {...mockProps} isLoading={true}/>);
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    describe('componentDidMount', () => {
+      it('should call fetchRecipesAndAttribution if nothing in localStorage', () => {
+        wrapper.instance().componentDidMount();
+        expect(mockProps.fetchRecipesAndAttribution).toHaveBeenCalled();
+      });
+
+      it('should call fetchRecipesAndAttribution with savedUserRecipes', () => {
+        const expected = data.mockUserRecipeFromStorage
+        localStorage.setItem('userRecipes', JSON.stringify(data.mockUserRecipeFromStorage));
+        wrapper.instance().componentDidMount();
+        expect(mockProps.fetchRecipesAndAttribution).toHaveBeenCalledWith(expected);
+      });
+    });
+
+    describe('calculateTotalUserRecipes', () => {
+      it('should calculate the correct number of user recipes', () => {
+        const expected = 1;
+        wrapper = shallow(<App {...mockProps} desserts={data.mockRecipesWithUserNotes}/>)
+        const result = wrapper.instance().calculateTotalUserRecipes();
+        expect(result).toEqual(expected);
+      });
+    });
+
+    describe('getRecipeRoute', () => {
+      it('should return a RecipeCard if there is a match', () => {
+
+      });
+
+      it('should return an Error404 if there is no match', () => {
+
+      });
     });
   });
 
