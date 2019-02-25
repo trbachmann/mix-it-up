@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserInstructions should match the snapshot 1`] = `
+<div
+  className="UserInstructions--div"
+>
+  <img
+    alt="Empty recipe book and measuring cups"
+    className="UserInstructions-img"
+    src="kara-eads-unsplash.jpg"
+  />
+  <h2>
+    Start saving your recipes today!
+  </h2>
+  <p>
+    Click on a recipe
+  </p>
+  <p>
+    Add your personal baking notes and then save the recipe for future reference
+  </p>
+  <NavLink
+    activeClassName="active"
+    aria-current="page"
+    to="/"
+  >
+    <button
+      className="UserInstructions--button"
+    >
+      Get started
+    </button>
+  </NavLink>
+</div>
+`;
