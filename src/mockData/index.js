@@ -149,6 +149,24 @@ export const mockUserRecipeToChangeNotes = {
   notes: 'Increase peanut butter by 1/2 cup and increase vanilla 2 teaspoons'
 };
 
+export const mockRecipesInStorage = [
+  {
+    id: "The-Best-_and-Easy_-Peanut-Butter-Cookies-2665930",
+    notes: 'Increase peanut butter by 1/2 cup and increase vanilla 2 teaspoons'
+  },
+  {
+    id: "Toasted-marshmallow-cookies-and-cream-milkshake-335047",
+    notes: 'Get an extra small bag of marshmallows for this recipe'
+  }
+];
+
+export const mockRecipesInStorageAfterDelete = [
+  {
+    id: "The-Best-_and-Easy_-Peanut-Butter-Cookies-2665930",
+    notes: 'Increase peanut butter by 1/2 cup and increase vanilla 2 teaspoons'
+  } 
+];
+
 export const mockRecipesWithUserNotes = [
   {
     yield: "4 Servings",
