@@ -70,13 +70,13 @@ describe('App', () => {
     });
 
     describe('getRecipeRoute', () => {
-      it('should return a RecipeCard if there is a match', () => {
-
-      });
-
       it('should return an Error404 if there is no match', () => {
-
+        const mockPath = { params: { id: 'mockRecipe'} };
+        const result = wrapper.instance().getRecipeRoute({ match: mockPath });
+        const error404Wrapper = shallow(result);
+        expect(error404Wrapper.find('.Error404')).toHaveLength(1);
       });
+
     });
   });
 
