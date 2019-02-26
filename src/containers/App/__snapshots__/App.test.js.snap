@@ -7,7 +7,9 @@ exports[`App App component should match the snapshot 1`] = `
   <header
     className="App--header"
   >
-    <h1>
+    <h1
+      className="App--h1"
+    >
       Mix It Up
     </h1>
     <Nav
@@ -42,6 +44,20 @@ exports[`App App component should match the snapshot 1`] = `
       component={[Function]}
     />
   </Switch>
+  <div
+    className="App--div-attribution"
+  >
+    <p>
+      Recipe search powered by
+      <a
+        className="App--div-anchor"
+      >
+        <img
+          alt="Yummly"
+        />
+      </a>
+    </p>
+  </div>
 </div>
 `;
 
@@ -52,7 +68,9 @@ exports[`App App component should match the snapshot when loading 1`] = `
   <header
     className="App--header"
   >
-    <h1>
+    <h1
+      className="App--h1"
+    >
       Mix It Up
     </h1>
     <Nav
@@ -88,5 +106,19 @@ exports[`App App component should match the snapshot when loading 1`] = `
       component={[Function]}
     />
   </Switch>
+  <div
+    className="App--div-attribution"
+  >
+    <p>
+      Recipe search powered by
+      <a
+        className="App--div-anchor"
+      >
+        <img
+          alt="Yummly"
+        />
+      </a>
+    </p>
+  </div>
 </div>
 `;

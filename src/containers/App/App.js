@@ -38,11 +38,11 @@ export class App extends Component {
   }
   
   render() {
-    const { isLoading } = this.props;
+    const { isLoading, attribution } = this.props;
     return (
       <div className="App">
         <header className="App--header">
-          <h1>Mix It Up</h1>
+          <h1 className='App--h1'>Mix It Up</h1>
           <Nav totalUserRecipes={this.calculateTotalUserRecipes()}/>
         </header>
         { isLoading && <Loading />}
@@ -54,6 +54,12 @@ export class App extends Component {
           <Route exact path='/' render={({ match }) => <RecipeContainer match={match}/>}/>
           <Route component={Error404} />
         </Switch>
+        <div className='App--div-attribution'>
+          <p>
+            Recipe search powered by
+            <a className='App--div-anchor' href={attribution.url}><img alt='Yummly' src={attribution.logo}/></a>
+          </p>
+        </div>
       </div>
     );
   }
