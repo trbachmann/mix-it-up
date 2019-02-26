@@ -1,4 +1,4 @@
-.RecipeCard-article {
+.RecipeCard--article {
   border-radius: 8px;
   background-color: #fff;
   width: 800px;
@@ -90,7 +90,7 @@
     flex-direction: column;
   }
 
-  .RecipeCard-article {
+  .RecipeCard--article {
     width: 500px;
   }
 
@@ -113,7 +113,7 @@
     flex-direction: column;
   }
 
-  .RecipeCard-article {
+  .RecipeCard--article {
     width: 300px;
   }
 

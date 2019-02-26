@@ -2,7 +2,7 @@
 
 exports[`RecipeCard RecipeCard component should match the snapshot 1`] = `
 <article
-  className="RecipeCard-article"
+  className="RecipeCard--article"
 >
   <div
     className="RecipeCard--div--button"
@@ -87,7 +87,7 @@ exports[`RecipeCard RecipeCard component should match the snapshot 1`] = `
 
 exports[`RecipeCard RecipeCard component should match the snapshot 2`] = `
 <article
-  className="RecipeCard-article"
+  className="RecipeCard--article"
 >
   <div
     className="RecipeCard--div--buttons"

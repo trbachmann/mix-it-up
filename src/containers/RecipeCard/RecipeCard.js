@@ -56,7 +56,7 @@ export class RecipeCard extends Component {
       style = 'RecipeCard--div--buttons';
     } 
     return (
-      <article className='RecipeCard-article'>
+      <article className='RecipeCard--article'>
         <div className={style}>
           <NavLink to='/'>
             <button className='RecipeCard--icon--close'><i className='far fa-times-circle'></i></button>
