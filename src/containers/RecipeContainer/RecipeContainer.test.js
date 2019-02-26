@@ -28,24 +28,39 @@ describe('RecipeContainer', () => {
     });
 
     describe('getRecipesToDisplay', () => {
-      it.skip('should call populateUserRecipes if /my-recipes', () => {
-
+      it('should call populateRecipesWithOutUsers if /', () => {
+        const instance = wrapper.instance();
+        jest.spyOn(instance, 'populateRecipesWithoutUsers');
+        wrapper.instance().getRecipesToDisplay();
+        expect(instance.populateRecipesWithoutUsers).toHaveBeenCalled();
       });
 
-      it.skip('should call populateRecipesWithOutUsers if /desserts', () => {
-
+      it('should call populateRecipesWithOutUsers if /desserts', () => {
+        const mockMatchWithDesserts = { path: '/desserts' }
+        wrapper = shallow(
+          <RecipeContainer
+            desserts={data.mockRecipesWithUserNotes}
+            match={mockMatchWithDesserts}
+          />
+        );
+        const instance = wrapper.instance();
+        jest.spyOn(instance, 'populateRecipesWithoutUsers');
+        wrapper.instance().getRecipesToDisplay();
+        expect(instance.populateRecipesWithoutUsers).toHaveBeenCalled();
       });
-    });
 
-    describe('populateUserRecipes', () => {
-      it.skip('should return RecipeLinkCards for recipes with notes', () => {
-
-      });
-    });
-
-    describe('populateRecipesWithoutUsers', () => {
-      it.skip('should returb RecipeLinkCards for recipes without notes', () => {
-
+      it('should call populateUserRecipes is /my-recipes', () => {
+        const mockMatchWithMyRecipes = { path: '/my-recipes' }
+        wrapper = shallow(
+          <RecipeContainer
+            desserts={data.mockRecipesWithUserNotes}
+            match={mockMatchWithMyRecipes}
+          />
+        );
+        const instance = wrapper.instance();
+        jest.spyOn(instance, 'populateUserRecipes');
+        wrapper.instance().getRecipesToDisplay();
+        expect(instance.populateUserRecipes).toHaveBeenCalled();
       });
     });
   });
