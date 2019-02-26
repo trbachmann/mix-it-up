@@ -31,10 +31,15 @@ describe('RecipeCard', () => {
 
     let wrapper;
     let wrapperMyRecipes;
+
     beforeEach(() => {
       wrapper = shallow(<RecipeCard {...mockProps}/>);
       wrapperMyRecipes = shallow(<RecipeCard {...mockPropsWithRecipeNotes}/>);
-    })
+    });
+
+    afterEach(() => {
+      localStorage.removeItem('userRecipes');
+    });
 
     it('should match the snapshot', () => {
       expect(wrapper).toMatchSnapshot();
@@ -47,8 +52,10 @@ describe('RecipeCard', () => {
     });
 
     describe('componentDidMount', () => {
-      it.skip('should set state with notes', () => {
-
+      it('should set state with notes', () => {
+        const expected = data.mockRecipeWithUserNote.notes;
+        wrapperMyRecipes.instance().componentDidMount();
+        expect(wrapperMyRecipes.state('notes')).toEqual(expected);
       });
     });
 
@@ -88,8 +95,13 @@ describe('RecipeCard', () => {
         expect(storage.setLocalStorage).toHaveBeenCalledWith(expectedId, expectedNotes);
       });
 
-      it.skip('should call updateLocalStorage is there are already recipes saved', () => {
-
+      it('should call updateLocalStorage is there are already recipes saved', () => {
+        localStorage.setItem('userRecipes', JSON.stringify(data.mockUserRecipeFromStorage));
+        const expectedId = mockProps.recipe.id;
+        const expectedNotes = 'Add an extra 1/2 cup of peanut butter';
+        wrapper.setState({ notes: expectedNotes });
+        wrapper.find('.RecipeCard--button').simulate('click');
+        expect(storage.updateLocalStorage).toHaveBeenCalledWith(expectedId, expectedNotes);
       });
 
 
