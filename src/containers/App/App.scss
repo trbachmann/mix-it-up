@@ -16,8 +16,12 @@ body {
 }
 
 .App--div-attribution {
-  margin: 20px, auto;
+  margin: auto;
   width: 275px;
+
+  p {
+    margin: 25px 0;
+  }
 }
 
 .App--div-anchor {
