@@ -18,14 +18,14 @@ exports[`App App component should match the snapshot 1`] = `
   </header>
   <Switch>
     <Route
+      component={[Function]}
       exact={true}
       path="/desserts"
-      render={[Function]}
     />
     <Route
+      component={[Function]}
       exact={true}
       path="/my-recipes"
-      render={[Function]}
     />
     <Route
       path="/my-recipes/:id"
@@ -36,9 +36,9 @@ exports[`App App component should match the snapshot 1`] = `
       render={[Function]}
     />
     <Route
+      component={[Function]}
       exact={true}
       path="/"
-      render={[Function]}
     />
     <Route
       component={[Function]}
@@ -80,14 +80,14 @@ exports[`App App component should match the snapshot when loading 1`] = `
   <Loading />
   <Switch>
     <Route
+      component={[Function]}
       exact={true}
       path="/desserts"
-      render={[Function]}
     />
     <Route
+      component={[Function]}
       exact={true}
       path="/my-recipes"
-      render={[Function]}
     />
     <Route
       path="/my-recipes/:id"
@@ -98,9 +98,9 @@ exports[`App App component should match the snapshot when loading 1`] = `
       render={[Function]}
     />
     <Route
+      component={[Function]}
       exact={true}
       path="/"
-      render={[Function]}
     />
     <Route
       component={[Function]}

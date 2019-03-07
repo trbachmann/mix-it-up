@@ -47,11 +47,11 @@ export class App extends Component {
         </header>
         { isLoading && <Loading />}
         <Switch>
-          <Route exact path='/desserts' render={({ match }) => <RecipeContainer match={match}/>} />
-          <Route exact path='/my-recipes' render={({ match }) => <RecipeContainer match={match}/>} />
+          <Route exact path='/desserts' component={RecipeContainer} />
+          <Route exact path='/my-recipes' component={RecipeContainer} />
           <Route path='/my-recipes/:id' render={this.getRecipeRoute} />
           <Route path='/desserts/:id' render={this.getRecipeRoute} />
-          <Route exact path='/' render={({ match }) => <RecipeContainer match={match}/>}/>
+          <Route exact path='/' component={RecipeContainer} />
           <Route component={Error404} />
         </Switch>
         <div className='App--div-attribution'>
