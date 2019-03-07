@@ -5,7 +5,7 @@ export const dessertsReducer = (state = [], action) => {
     case 'UPDATE_RECIPE_NOTES':
       const updatedRecipes = state.map(recipe => {
         if (recipe.id === action.id) {
-          recipe.notes = action.notes;
+          return { ...recipe, notes: action.notes };
         }
         return recipe;
       });
@@ -13,7 +13,7 @@ export const dessertsReducer = (state = [], action) => {
     case 'DELETE_RECIPE_NOTES':
       const recipesWithNoteRemoved = state.map(recipe => {
         if (recipe.id === action.id) {
-          recipe.notes = '';
+          return { ...recipe, notes: ''};
         }
         return recipe;
       });
