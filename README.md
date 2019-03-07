@@ -4,6 +4,12 @@ Mix It Up is a recipe app for bakers. Users can save links to recipes as well as
 ### Set-Up: 
 Clone this repo  
 Run `npm install` from the root directory  
+Request an api key and id from [Yummly](https://developer.yummly.com/#the-api)  
+In the src directory add a file named api-key.js and add the code snippet below with your api id and key from Yummly
+```
+export const apiId = 'your api id here';
+export const apiKey = 'your api key here';
+```
 Run `npm start` and visit localhost:3000 in your browser  
 
 ### Preview:
