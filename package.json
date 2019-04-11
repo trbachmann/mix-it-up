@@ -1,8 +1,7 @@
 {
-  "name": "mix-it-up",
+  "name": "mix-it-up-turing",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://trbachmann.github.io/mix-it-up",
   "dependencies": {
     "node-sass": "^4.11.0",
     "prop-types": "^15.7.2",
@@ -18,8 +17,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "predeploy": "gh-pages -d build",
-    "deploy": "npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -35,8 +32,7 @@
   "devDependencies": {
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.9.1",
-    "enzyme-to-json": "^3.3.5",
-    "gh-pages": "^2.0.1"
+    "enzyme-to-json": "^3.3.5"
   },
   "jest": {
     "snapshotSerializers": [
