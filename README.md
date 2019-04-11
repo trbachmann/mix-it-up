@@ -10,7 +10,7 @@ In the root directory add a file named .env.development.local and add the code s
 REACT_APP_API_KEY='your api id here';
 REACT_APP_API_ID='your api key here';
 ```
-Run `npm start` and visit localhost:3000 in your browser  
+Run `npm start` and visit localhost:3000 in your browser.  
 
 ### Preview:
 ![Mix It Up Video Preview](./src/images/mix-it-up.gif)  
