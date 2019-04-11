@@ -1,5 +1,7 @@
 # Mix It Up 
 Mix It Up is a recipe app for bakers. Users can save links to recipes as well as personalized notes with their ingredient and cook time adjustments for those recipes.
+#### See It Live:
+https://mix-it-up-turing.herokuapp.com/ 
 
 ### Set-Up: 
 Clone this repo  
