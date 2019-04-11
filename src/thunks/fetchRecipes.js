@@ -1,5 +1,4 @@
 import { fetchData } from '../utils/fetchData';
-import { apiId, apiKey } from '../api-key';
 import { toggleLoading, setError } from '../actions';
 
 export const fetchRecipes = (recipes) => {
@@ -7,7 +6,7 @@ export const fetchRecipes = (recipes) => {
     dispatch(toggleLoading(true));
     const unresolvedRecipes = recipes.map(async (recipe) => {
       try {
-        const url = `https://api.yummly.com/v1/api/recipe/${recipe.id}?_app_id=${apiId}&_app_key=${apiKey}`;
+        const url = `https://api.yummly.com/v1/api/recipe/${recipe.id}?_app_id=` + process.env.REACT_APP_API_ID + '&_app_key=' + process.env.REACT_APP_API_KEY;
         const data = await fetchData(url);
         const notes = recipe.notes || '';
         const dataWithNotes = {...data, notes }
